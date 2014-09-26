@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="MooTools-core-1.4.5" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="MooTools" />
+      <option name="frameworkVersion" value="1.4.5" />
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs/mootools-core-1.4.5-full-nocompat.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

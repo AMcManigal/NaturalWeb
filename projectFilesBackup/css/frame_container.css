@@ -1,0 +1,61 @@
+
+body{
+
+    margin: 0px;
+
+}
+
+/*Frame Container. Includes a hack to force hardware CSS3D rendering*/
+.frame_cont {
+    position: absolute;
+    width: 3000px;
+    height: 5500px;
+    font-family: sans-serif;
+    font-size: 40px;
+    background-color: rgba(0,0,0,0.90);
+    box-shadow: 0px 0px 20px rgba(0,255,255,0.5);
+    border: 0px solid rgba(127,255,255,0.25);
+    -webkit-transform: translateZ(0);
+    -webkit-background-size:100% 100%;
+    -webkit-animation: resize 1s ease-in 1; /*shorthands are better!*/
+    -webkit-transform: scale3d(100%, 100%, 1);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+
+}
+
+.frame_cont:hover{
+
+    box-shadow: 0px 0px 20px rgba(0,255,255,0.75);
+    border: 50px solid rgba(127,255,255,0.75);
+    background-color: rgba(0,0,0,1);
+    -webkit-transform: translateZ(0);
+}
+
+/*CSS3D rendering hack*/
+@-webkit-keyframes resize {
+    0% { -webkit-transform: scale3d(0%, 0%, 1); }
+    90% { -webkit-transform: scale3d(100%, 100%, 1); }
+    95% { -webkit-transform: scale3d(95%, 95%, 1); }
+    100% { -webkit-transform: scale3d(100%, 100%, 1); }
+}
+
+/*Buttons that allow frame transitions*/
+.frame_left {
+    position: absolute;
+    width: 150px;
+    height: 5500px;
+    z-index: 3;
+    background-color: rgba(211, 255, 200, 0.9);
+}
+
+.frame_right {
+    position: absolute;
+    width: 150px;
+    left: 2851px;
+    height: 5500px;
+    z-index: 3;
+    background-color: rgba(211, 255, 200, 0.9);
+}
+
+

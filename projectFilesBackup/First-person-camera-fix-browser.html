@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<title>Internet View-Port</title>
+        <style>
+            @import "css/frame.css";
+            @import "css/frame_container.css";
+            @import "css/map.css";
+        </style>
+
+        <script src="libs/mootools-core-1.4.5-full-nocompat.js"></script>
+        <script src="libs/mootools-more-1.4.0.1.js"></script>
+        <script src="libs/Scrollable.js"></script>
+        <script src="libs/three.min.js"></script>
+        <script src="libs/tween.min.js"></script>
+        <script src="libs/CSS3DRenderer.js"></script>
+        <script src="libs/FirstPersonControls.js"></script>
+
+        <script src="PageManager.js"></script>
+        <script src="MapManager.js"></script>
+        <script src="BrowserManager.js"></script>
+        <script src="FrameGroup.js"></script>
+        <script src="NWEventHandler.js"></script>
+        <script src="WikiElementsBuilder.js"></script>
+        <script src="WebContentManager.js"></script>
+
+	</head>
+	<body>
+
+
+
+        <div id="container"></div>
+        <div id="remote_html"></div>
+        <div id="size_test"></div>
+        <div id="pages"></div>
+        <div id="Room"></div>
+
+        <div id="p-search" role="search" hidden="true">
+            <h3><label for="searchInput">Search</label></h3>
+            <form action="http://en.wikipedia.org/w/index.php" id="searchform">
+                <div id="simpleSearch">
+                    <input name="search" title="Search Wikipedia [alt-shift-f]" accesskey="f" id="searchInput" autocomplete="off" placeholder="Search" tabindex="1">						<button type="submit" name="button" title="Search Wikipedia for this text" id="searchButton"><img src="//bits.wikimedia.org/static-1.22wmf1/skins/vector/images/search-ltr.png?303-4" alt="Search" width="12" height="13"></button>								<input type="hidden" name="title" value="Special:Search">
+                </div>
+            </form>
+        </div>
+
+
+
+            <script>
+
+            //Lines of code 199
+            //lines of comments 12
+
+            //Variables for the cube map, tables, and controls
+            var geometry, material, mesh;
+            var camera;
+            var scene, renderer, renderer2;
+            var container, Room;
+            var controls;
+            var light, pointLight;
+            var objects = [];
+            var sides = [];
+            var time = Date.now();
+            var clock = new THREE.Clock();
+
+            var browserManager;
+
+
+
+            init();
+            init2();
+            animate();
+
+
+
+                //Sets up basic functionality
+                function init() {
+
+                    scene = new THREE.Scene();
+                    container = document.getElementById( 'container' );
+
+                    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 100000 );
+                    camera.position.set( 0, 15, 0);
+                    camera.frustumCulled = false;
+
+                    browserManager = new BrowserManager(scene, camera);
+
+
+
+                    //Render
+                    renderer = new THREE.CSS3DRenderer();
+                    renderer.setSize( window.innerWidth, window.innerHeight );
+                    renderer.domElement.style.position = 'absolute';
+                    document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+                    //Controls
+                    initializeControls();
+
+
+
+                    //EventListener
+
+                    window.addEventListener( 'resize', onWindowResize, false );
+                }
+
+
+
+            function init2() {
+
+
+                Room = document.getElementById( 'Room' );
+
+                scene.fog = new THREE.FogExp2( 0x000000, 0.0035 );
+
+                light = new THREE.DirectionalLight( 0xffffff );
+                light.position.set( 0, 0.5, 1 ).normalize();
+                scene.add( light );
+
+
+
+                // ground
+
+                var material = new THREE.MeshLambertMaterial( { color: 0x4CF2D6, wireframe: true, wireframeLinewidth: 10 } );
+
+                mesh = new THREE.Mesh( new THREE.PlaneGeometry( 1000, 1000, 100, 100 ), material );
+                mesh.position.y = 0;
+                mesh.rotation.x = - Math.PI / 2;
+                scene.add( mesh );
+
+
+
+                renderer2 = new THREE.WebGLRenderer( { clearColor: 0x000000, clearAlpha: 1, antialias: true } );
+                renderer2.setSize( window.innerWidth, window.innerHeight );
+
+
+                Room.appendChild( renderer2.domElement );
+
+                //
+
+                window.addEventListener( 'resize', onWindowResize, false );
+            }
+
+            // TODO: Added
+            function initializeControls() {
+                controls = new THREE.FirstPersonControls( camera, renderer.domElement  );
+                controls.movementSpeed = 0;
+                controls.lookSpeed = 0.13;
+                controls.noFly = true;
+                controls.lookVertical = true;
+            }
+
+                //Resize the windows
+
+                function onWindowResize() {
+
+                    camera.aspect = window.innerWidth / window.innerHeight;
+
+                    camera.updateProjectionMatrix();
+
+                    renderer.setSize( window.innerWidth, window.innerHeight );
+
+                    // TODO: Added if
+                    if (controls !== null) {
+                        controls.handleResize();
+                    }
+
+
+                    render();
+                }
+
+                //Animation for the scene
+
+                function animate() {
+
+                    requestAnimationFrame( animate );
+
+                    // TODO: Added
+                    TWEEN.update();
+
+                    render();
+                }
+
+                //Render the scene
+
+                function render() {
+                   // camera.lookAt(camera.target);
+
+                    var delta = clock.getDelta(),
+                            time = clock.getElapsedTime() * 5;
+
+                    // TODO: Added if
+                    if (controls !== null) {
+                        controls.update( delta );
+                    }
+
+                    renderer.render( scene, camera );
+                    renderer2.render(scene, camera);
+
+
+                }
+
+
+
+            </script>
+    </body>
+</html>

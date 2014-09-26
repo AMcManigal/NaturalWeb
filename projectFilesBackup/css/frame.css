@@ -1,0 +1,238 @@
+
+/*Basic elements that are used to construct the frame element*/
+.frame{
+    position: absolute;
+    width: 2700px;
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 40px;
+    left: 150px;
+    overflow: visible;
+    z-index: 1;
+
+
+}
+
+.frame div.wiki_infobox{
+    position: relative;
+    height: 4500px;
+    overflow: auto;
+    z-index: 10;
+}
+
+.frame div.wiki_infobox::-webkit-scrollbar {
+    position: relative;
+    width: 40px;
+    height: 100px;
+}
+.frame div.wiki_infobox::-webkit-scrollbar-button {
+    background: #33cc32
+}
+
+.frame div.wiki_infobox::-webkit-scrollbar-track-piece {
+    background: #564a1a
+}
+.frame div.wiki_infobox::-webkit-scrollbar-thumb {
+    background: #33cc32
+}​
+
+h1 {
+    position: absolute;
+    overflow: visible;
+    font-size: 150px;
+    top: -650px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1000px;
+    z-index: 15;
+    color: rgb(127,255,255);
+}
+
+.frame h2 {
+    position: relative;
+    font-size: 150px;
+    text-align: center;
+    color: rgb(127,255,255);
+
+}
+
+.frame h3 {
+    position: relative;
+    font-size: 100px;
+    text-align: left;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    color: rgb(127,255,255);
+}
+
+.frame h4 {
+    position: relative;
+    font-size: 100px;
+    text-align: left;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    color: rgb(127,255,255);
+}
+
+.frame p {
+    position: relative;
+    font-size: 80px;
+    text-align: left;
+    margin: 50px;
+    color: rgb(255,255,255);
+
+}
+/*
+.frame table {
+
+    position: relative;
+    margin: 50px;
+    width: 33%;
+    height: 4500px;
+    float: right;
+    font-size: 60px;
+    text-align: center;
+    border-collapse: collapse;
+    color: rgba(255,255,255,1);
+    overflow-y: scroll;
+    max-height: 5000px;
+
+}
+*/
+
+.frame td{
+
+    border: 10px solid rgb(206, 255, 206);
+
+}
+
+.frame tr{
+
+    border: 10px solid rgb(206, 255, 206);
+    vertical-align: text-top;
+}
+
+/*
+.frame div{
+    position: relative;
+
+    font-size: 80px;
+    border-collapse: collapse;
+    color: rgba(255,255,255,1);
+    width: 100%;
+}
+*/
+.frame ol{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 50px;
+    text-align: left;
+    padding-left: 40px;
+    font-size: 60px;
+    color: rgba(255,255,255,0.75);
+}
+
+.frame ul{
+    position: relative;
+    text-align: center;
+    padding-left: 40px;
+    margin: 50px;
+    font-size: 60px;
+    text-align: left;
+    color: rgba(255,255,255,0.75);
+}
+
+.frame a {
+    color: rgb(61, 248, 255);
+}
+
+/************************************************
+* Infobox
+************************************************/
+
+.wiki_infobox {
+    position: relative;
+    width: 40%;
+    float: right;
+    font-size: 60px;
+    margin: 50px;
+    border-collapse: collapse;
+    text-align: center;
+
+
+}
+
+.wiki_infobox img {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+}
+
+.wiki_infobox table {
+
+}
+
+/*********************************************************
+* Frame Image
+**********************************************************/
+
+
+.wiki_img_left{
+    position: relative;
+    margin: 50px;
+    font-size: 60px;
+    float: left;
+    border: 50px solid rgba(127,255,255, 0.5);
+    background-color: rgba(127,255,255, 0.5);
+    z-index: 1;
+}
+
+.wiki_img_right img{
+
+    float: right;
+    border: 50px solid rgba(127,255,255, 0.5);
+}
+
+.wiki_img_left img{
+    float: left;
+    border: 50px solid rgba(127,255,255, 0.5);
+
+}
+
+.wiki_img_right{
+    font-size: 60px;
+    position: relative;
+    margin: 50px;
+    float: right;
+    border: 50px solid rgba(127,255,255, 0.5);
+    background-color: rgba(127,255,255, 0.5);
+    z-index: 1;
+}
+
+.wiki_caption span{
+    clear: both;
+    display: block;
+    z-index: 10;
+}
+
+.wiki_caption p {
+    font-size: 80px;
+    margin: 30px;
+    width: 100%;
+}
+
+.wiki_caption a {
+    font-size: 90px;
+}
+
+.wiki_caption em {
+    color: #ffffff;
+    margin: 30px;
+    font-size: 90px;
+}
+
+
+
+

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="mooTools-more-1.4.0.1" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="MooTools" />
+      <option name="frameworkVersion" value="1.4.0" />
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs/mootools-more-1.4.0.1.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
